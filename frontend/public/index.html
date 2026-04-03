@@ -1,11 +1,243 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Smart Appointment Scheduler</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedCraft AI | Minecraft-Inspired Healthcare</title>
+  <meta name="description"
+    content="A modern healthcare website inspired by Minecraft aesthetics, with AI diagnosis tools, medical report uploads, and a voxel dashboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="site-shell">
+    <header class="hero" id="home">
+      <div class="hero__background">
+        <div class="hero__image layer" data-depth="0.12"></div>
+        <div class="hero__overlay"></div>
+        <div class="medical-float medical-float--cross layer" data-depth="0.16" aria-hidden="true"></div>
+        <div class="medical-float medical-float--capsule layer" data-depth="0.2" aria-hidden="true"></div>
+      </div>
+
+      <nav class="navbar">
+        <a class="brand" href="#home" aria-label="MedCraft AI home">
+          <img class="brand__icon" src="./assets/heart-logo-transparent.png" alt="MedCraft AI logo">
+          <span class="brand__text">MedCraft AI</span>
+        </a>
+        <div class="nav-links">
+          <a href="#home" class="stone--container">Home</a>
+          <a href="#features" class="stone--container">Features</a>
+          <a href="#diagnosis" class="stone--container">Diagnosis</a>
+          <a href="#services" class="stone--container">Services</a>
+          <a href="#contact" class="stone--container">Contact</a>
+          <a href="./sign-in.html" class="stone--container">Sign In</a>
+          <a href="./sign-up.html" class="stone--container">Sign Up</a>
+        </div>
+      </nav>
+
+      <div class="hero__content">
+        <div class="hero__copy">
+          <p class="eyebrow">Voxel healthcare platform</p>
+          <h1>AI Diagnosis In A Trusted Minecraft World.</h1>
+          <p class="hero__description">
+            Upload reports, monitor symptoms, and review health insights through a futuristic
+            medical interface inspired by floating islands, block textures, and clean clinical design.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#diagnosis">Upload Report</a>
+            <a class="button button--secondary" href="#features">Check Diagnosis</a>
+          </div>
+          <div class="hero__indicators">
+            <div class="indicator-card">
+              <span class="indicator-card__label">Health Sync</span>
+              <strong>Realtime Monitoring</strong>
+            </div>
+            <div class="indicator-card indicator-card--alert">
+              <span class="indicator-card__label">Medical Assist</span>
+              <strong>Rapid Triage Signals</strong>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hud-panel" id="dashboard">
+          <div class="hud-panel__header">
+            <span class="hud-panel__label">CARE HUD</span>
+            <span class="hud-panel__status">Secure Live</span>
+          </div>
+          <div class="health-meter">
+            <span>System Health</span>
+            <div class="health-meter__track" aria-hidden="true">
+              <span></span>
+            </div>
+          </div>
+          <div class="hud-panel__stats">
+            <article>
+              <strong>182K+</strong>
+              <span>Patients Analyzed</span>
+            </article>
+            <article>
+              <strong>61K+</strong>
+              <span>Reports Processed</span>
+            </article>
+            <article>
+              <strong>98.4%</strong>
+              <span>Diagnostic Accuracy</span>
+            </article>
+          </div>
+          <div class="hud-panel__footer">
+            <div class="signal-bars" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <p>Cloud-based care intelligence with game-like clarity and clinical trust.</p>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section--features" id="features">
+        <div class="section-heading">
+          <p class="eyebrow">Features</p>
+          <h2>Healthcare tools rendered in crisp block-style UI.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card feature-card--grass">
+            <span class="feature-card__tag">AI Core</span>
+            <h3>AI Diagnosis</h3>
+            <p>Analyze symptoms and clinical indicators with a fast, readable engine built for modern care workflows.
+            </p>
+          </article>
+          <article class="feature-card feature-card--stone">
+            <span class="feature-card__tag">Reports</span>
+            <h3>Report Analysis</h3>
+            <p>Convert uploaded reports into structured insights with highlighted risks, findings, and next-step
+              guidance.</p>
+          </article>
+          <article class="feature-card feature-card--ice">
+            <span class="feature-card__tag">Support</span>
+            <h3>Symptom Checker</h3>
+            <p>Use conversational medical screening flows to surface likely conditions and recommended care paths.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--diagnosis" id="diagnosis">
+        <div class="section-heading">
+          <p class="eyebrow">Diagnosis Upload</p>
+          <h2>Drop reports into a crafting-table style diagnosis station.</h2>
+        </div>
+
+        <div class="diagnosis-layout">
+          <div class="upload-panel">
+
+
+            <label class="upload-zone" for="report-file" id="upload-zone">
+              <input id="report-file" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx">
+
+              <span class="upload-zone__icon" aria-hidden="true"></span>
+              <strong>Drag &amp; drop a medical report</strong>
+              <span>PDF, JPG, PNG, DOC up to 20MB</span>
+            </label>
+
+            <div class="upload-preview" id="upload-preview">
+              <p class="upload-preview__label">Inventory Slot</p>
+              <strong>No report selected yet</strong>
+              <span>Your uploaded file name will appear here.</span>
+            </div>
+          </div>
+
+          <div class="result-panel">
+            <div class="result-panel__header">
+              <span>Diagnosis Output</span>
+              <span class="result-panel__badge">AI Ready</span>
+            </div>
+
+            <div class="result-list">
+              <article>
+                <strong>Blood Panel Summary</strong>
+                <p>Auto-detects anomalies, compares ranges, and surfaces urgent markers with clean clinical language.
+                </p>
+              </article>
+
+              <article>
+                <strong>Radiology Scan Notes</strong>
+                <p>Supports image-linked reports and converts dense findings into patient-friendly summaries.</p>
+              </article>
+
+              <article>
+                <strong>Next Step Guidance</strong>
+                <p>Flags consultation urgency, probable risk level, and suggested follow-up pathways.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--services" id="services">
+        <div class="section-heading">
+          <p class="eyebrow">Services</p>
+          <h2>Professional care services with glass-and-voxel depth.</h2>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <h3>Virtual Consultation</h3>
+            <p>Connect care teams and patients through a calm, secure interface with real-time prep summaries.</p>
+          </article>
+          <article class="service-card">
+            <h3>Health Monitoring</h3>
+            <p>Track status trends, risk alerts, and wellness signals with dashboard modules that feel like a game HUD.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>AI Reports</h3>
+            <p>Generate readable medical report breakdowns with structured outputs for clinicians and patients.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--stats">
+        <div class="dashboard-strip">
+          <article>
+            <span>Patients</span>
+            <strong>182,430</strong>
+          </article>
+          <article>
+            <span>Reports</span>
+            <strong>61,982</strong>
+          </article>
+          <article>
+            <span>Accuracy</span>
+            <strong>98.4%</strong>
+          </article>
+          <article>
+            <span>Clinics</span>
+            <strong>240+</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--cta" id="contact">
+        <div class="cta-panel">
+          <div>
+            <p class="eyebrow">Ready for launch</p>
+            <h2>Bring Minecraft energy to digital healthcare without losing clarity or trust.</h2>
+          </div>
+          <a class="button button--primary" href="#diagnosis">Start Diagnosis</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
