@@ -1,10 +1,12 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const AppointmentSchema = new mongoose.Schema({
-  patientName: { type: String, required: true },
-  doctorName: { type: String, required: true },
-  time: { type: String, required: true }, // store as string or Date depending on your needs
-  status: { type: String, default: "pending" }, // pending, completed, cancelled
+  patientName: String,
+  doctorName: String,
+  requestedTime: Date,
+  status: { type: String, enum: ['scheduled','rescheduled','cancelled','noshow'], default: 'scheduled' },
+  urgency: Number,
+  predictedDuration: Number
 });
 
-module.exports = mongoose.model("Appointment", AppointmentSchema);
+module.exports = mongoose.model('Appointment', AppointmentSchema);

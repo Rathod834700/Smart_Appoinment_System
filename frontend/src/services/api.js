@@ -1,25 +1,26 @@
-const API_URL = "http://localhost:5000/api";
-
-export async function fetchDoctors() {
-  const res = await fetch(`${API_URL}/doctors`);
-  return res.json();
-}
-
-export async function fetchPatients() {
-  const res = await fetch(`${API_URL}/patients`);
-  return res.json();
-}
-
-export async function fetchQueue() {
-  const res = await fetch(`${API_URL}/appointments/queue`);
-  return res.json();
-}
-
-export async function createAppointment(payload) {
-  const res = await fetch(`${API_URL}/appointments`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
+// Create a new appointment
+export async function createAppointment(data) {
+  const res = await fetch('/api/appointments/create', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
   });
+  return res.json();
+}
+
+// Get list of doctors
+export async function getDoctors() {
+  const res = await fetch('/api/doctors');
+  return res.json();
+}
+
+// Alias for getDoctors (to match components using fetchDoctors)
+export async function fetchDoctors() {
+  return getDoctors();
+}
+
+// Fetch the current appointment queue
+export async function fetchQueue() {
+  const res = await fetch('/api/appointments');
   return res.json();
 }
