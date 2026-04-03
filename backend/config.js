@@ -1,13 +1,23 @@
-const mongoose = require("mongoose");
+const { MongoClient } = require('mongodb');
 
-const connectDB = async () => {
+let db;
+
+async function connectDB() {
+  const uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
+  const client = new MongoClient(uri);
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/appointments");
-    console.log("✅ MongoDB connected successfully");
+    await client.connect();
+    console.log('✅ MongoDB connected');
+    db = client.db('smart_appointments'); // database name
   } catch (err) {
-    console.error("❌ MongoDB connection failed:", err.message);
+    console.error('MongoDB connection error:', err);
     process.exit(1);
   }
-};
+}
 
-module.exports = connectDB;
+function getDB() {
+  if (!db) throw new Error('Database not initialized');
+  return db;
+}
+
+module.exports = { connectDB, getDB };
