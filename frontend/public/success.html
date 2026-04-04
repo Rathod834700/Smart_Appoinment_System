@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Successful</title>
+    <style>
+        :root {
+            --bg: radial-gradient(circle at top, #fff8dd 0%, #d8f5e5 45%, #bcdffb 100%);
+            --card: rgba(255, 255, 255, 0.92);
+            --text: #183153;
+            --accent: #0f9d58;
+            --accent-dark: #0c7f47;
+            --shadow: 0 20px 50px rgba(24, 49, 83, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .card {
+            width: min(92vw, 520px);
+            padding: 42px 30px;
+            border-radius: 28px;
+            background: var(--card);
+            box-shadow: var(--shadow);
+            text-align: center;
+            backdrop-filter: blur(12px);
+            animation: rise 0.5s ease-out;
+        }
+
+        .icon {
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 2.2rem;
+            color: white;
+            background: linear-gradient(135deg, #34c97b, #0f9d58);
+            box-shadow: 0 12px 25px rgba(15, 157, 88, 0.28);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(2rem, 4vw, 2.7rem);
+        }
+
+        p {
+            margin: 0 0 28px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        button {
+            border: 0;
+            border-radius: 999px;
+            padding: 14px 34px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 10px 20px rgba(15, 157, 88, 0.25);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(15, 157, 88, 0.3);
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="card">
+        <div class="icon">&#10003;</div>
+        <h1>Login Successful</h1>
+        <p>Your sign in was completed successfully. Click the button below to go to the home page.</p>
+        <button type="button" id="okButton">OK</button>
+    </main>
+
+    <script>
+        document.getElementById("okButton").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+
+</html>

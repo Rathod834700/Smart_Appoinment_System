@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 
 const PatientSchema = new mongoose.Schema({
   name: String,
-  age: Number,
+  email: String,
   phone: String,
+  password: String,
+  age: Number,
   history: [String]
 });
 

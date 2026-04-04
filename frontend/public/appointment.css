@@ -1,0 +1,228 @@
+:root {
+    --text: #eefaff;
+    --muted: #c8dceb;
+    --green-1: #b5f8ae;
+    --green-2: #63da7f;
+    --green-3: #2d8b49;
+    --blue-1: #b4f0ff;
+    --blue-2: #55c8ff;
+    --panel: rgba(8, 18, 29, 0.8);
+    --pixel-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, 0.05),
+        inset 0 0 0 4px rgba(4, 10, 18, 0.28),
+        0 10px 0 rgba(0, 0, 0, 0.14),
+        0 24px 44px rgba(0, 0, 0, 0.24);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    font-family: "Chakra Petch", sans-serif;
+    color: var(--text);
+    background: linear-gradient(180deg, #091521 0%, #0f2339 48%, #07111a 100%);
+}
+
+.nav-link {
+    color: var(--blue-1);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.appointment-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.appointment-background,
+.appointment-shell {
+    position: relative;
+    z-index: 1;
+}
+
+.appointment-background {
+    position: absolute;
+    inset: 0;
+}
+
+.appointment-background__image,
+.appointment-background__overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.appointment-background__image {
+    background:
+        linear-gradient(180deg, rgba(7, 18, 28, 0.06), rgba(7, 18, 28, 0.24)),
+        url("./assets/diagnosis.jpg") center center / cover no-repeat;
+}
+
+.appointment-background__overlay {
+    background:
+        linear-gradient(90deg, rgba(4, 12, 20, 0.64), rgba(4, 12, 20, 0.24)),
+        linear-gradient(180deg, rgba(6, 16, 26, 0.08), rgba(7, 17, 26, 0.72));
+}
+
+.appointment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.appointment-nav,
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+
+.brand {
+    gap: 0.9rem;
+    font-family: "Press Start 2P", cursive;
+    font-size: 0.78rem;
+}
+
+.brand__icon {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    box-shadow: var(--pixel-shadow);
+    mix-blend-mode: multiply;
+    filter: contrast(1.08) saturate(1.08);
+}
+
+.appointment-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+    gap: 2rem;
+    align-items: start;
+    margin-top: 3rem;
+}
+
+.eyebrow {
+    margin: 0 0 1rem;
+    font-family: "Press Start 2P", cursive;
+    font-size: 0.62rem;
+    line-height: 1.8;
+    color: var(--green-1);
+}
+
+.appointment-copy h1,
+.card-header h2 {
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 0.96;
+}
+
+.appointment-copy h1 {
+    max-width: 700px;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    text-shadow: 0 4px 0 rgba(6, 16, 25, 0.88), 0 14px 28px rgba(0, 0, 0, 0.34);
+}
+
+.appointment-copy p:last-child {
+    max-width: 620px;
+    margin-top: 1.3rem;
+    line-height: 1.75;
+    color: var(--muted);
+}
+
+.appointment-card,
+.slot-card {
+    position: relative;
+    padding: 1.4rem;
+    background: linear-gradient(180deg, rgba(8, 18, 29, 0.82), rgba(7, 15, 24, 0.74));
+    border: 1px solid rgba(143, 231, 255, 0.16);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.18), inset 0 0 0 2px rgba(255, 255, 255, 0.04);
+}
+
+.appointment-form,
+.field-grid,
+.slot-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.field-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field span {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--blue-1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(8, 18, 29, 0.86);
+    color: var(--text);
+    font: inherit;
+}
+
+.button {
+    min-height: 58px;
+    border: 0;
+    font-family: "Press Start 2P", cursive;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: #082114;
+    background: linear-gradient(180deg, var(--green-1), var(--green-2) 56%, var(--green-3));
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, 0.18),
+        inset 0 -6px 0 rgba(10, 65, 31, 0.42),
+        0 14px 24px rgba(36, 165, 90, 0.24);
+}
+
+.slot-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 2rem;
+}
+
+.slot-card span {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--blue-1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+}
+
+.slot-card strong {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 1.4rem;
+}
+
+.slot-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+@media (max-width: 960px) {
+
+    .appointment-hero,
+    .slot-grid,
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .appointment-page {
+        padding: 1rem;
+    }
+}

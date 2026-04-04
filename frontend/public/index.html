@@ -2,243 +2,255 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MedCraft AI | Minecraft-Inspired Healthcare</title>
-  <meta name="description"
-    content="A modern healthcare website inspired by Minecraft aesthetics, with AI diagnosis tools, medical report uploads, and a voxel dashboard.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Press+Start+2P&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedCraft AI | Minecraft-Inspired Healthcare</title>
+    <meta name="description"
+        content="A modern healthcare website inspired by Minecraft aesthetics, with AI diagnosis tools, medical report uploads, and a voxel dashboard.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="site-shell">
-    <header class="hero" id="home">
-      <div class="hero__background">
-        <div class="hero__image layer" data-depth="0.12"></div>
-        <div class="hero__overlay"></div>
-        <div class="medical-float medical-float--cross layer" data-depth="0.16" aria-hidden="true"></div>
-        <div class="medical-float medical-float--capsule layer" data-depth="0.2" aria-hidden="true"></div>
-      </div>
-
-      <nav class="navbar">
-        <a class="brand" href="#home" aria-label="MedCraft AI home">
-          <img class="brand__icon" src="./assets/heart-logo-transparent.png" alt="MedCraft AI logo">
-          <span class="brand__text">MedCraft AI</span>
-        </a>
-        <div class="nav-links">
-          <a href="#home" class="stone--container">Home</a>
-          <a href="#features" class="stone--container">Features</a>
-          <a href="#diagnosis" class="stone--container">Diagnosis</a>
-          <a href="#services" class="stone--container">Services</a>
-          <a href="#contact" class="stone--container">Contact</a>
-          <a href="http://localhost:3000/" class="stone--container" style="color: #4CAF50; border-color: #4CAF50;">Book Appointment</a>
-          <a href="./sign-in.html" class="stone--container">Sign In</a>
-          <a href="./sign-up.html" class="stone--container">Sign Up</a>
-        </div>
-      </nav>
-
-      <div class="hero__content">
-        <div class="hero__copy">
-          <p class="eyebrow">Voxel healthcare platform</p>
-          <h1>AI Diagnosis In A Trusted Minecraft World.</h1>
-          <p class="hero__description">
-            Upload reports, monitor symptoms, and review health insights through a futuristic
-            medical interface inspired by floating islands, block textures, and clean clinical design.
-          </p>
-          <div class="hero__actions">
-            <a class="button button--primary" href="#diagnosis">Upload Report</a>
-            <a class="button button--secondary" href="#features">Check Diagnosis</a>
-          </div>
-          <div class="hero__indicators">
-            <div class="indicator-card">
-              <span class="indicator-card__label">Health Sync</span>
-              <strong>Realtime Monitoring</strong>
-            </div>
-            <div class="indicator-card indicator-card--alert">
-              <span class="indicator-card__label">Medical Assist</span>
-              <strong>Rapid Triage Signals</strong>
-            </div>
-          </div>
-        </div>
-
-        <aside class="hud-panel" id="dashboard">
-          <div class="hud-panel__header">
-            <span class="hud-panel__label">CARE HUD</span>
-            <span class="hud-panel__status">Secure Live</span>
-          </div>
-          <div class="health-meter">
-            <span>System Health</span>
-            <div class="health-meter__track" aria-hidden="true">
-              <span></span>
-            </div>
-          </div>
-          <div class="hud-panel__stats">
-            <article>
-              <strong>182K+</strong>
-              <span>Patients Analyzed</span>
-            </article>
-            <article>
-              <strong>61K+</strong>
-              <span>Reports Processed</span>
-            </article>
-            <article>
-              <strong>98.4%</strong>
-              <span>Diagnostic Accuracy</span>
-            </article>
-          </div>
-          <div class="hud-panel__footer">
-            <div class="signal-bars" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <p>Cloud-based care intelligence with game-like clarity and clinical trust.</p>
-          </div>
-        </aside>
-      </div>
-    </header>
-
-    <main>
-      <section class="section section--features" id="features">
-        <div class="section-heading">
-          <p class="eyebrow">Features</p>
-          <h2>Healthcare tools rendered in crisp block-style UI.</h2>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card feature-card--grass">
-            <span class="feature-card__tag">AI Core</span>
-            <h3>AI Diagnosis</h3>
-            <p>Analyze symptoms and clinical indicators with a fast, readable engine built for modern care workflows.
-            </p>
-          </article>
-          <article class="feature-card feature-card--stone">
-            <span class="feature-card__tag">Reports</span>
-            <h3>Report Analysis</h3>
-            <p>Convert uploaded reports into structured insights with highlighted risks, findings, and next-step
-              guidance.</p>
-          </article>
-          <article class="feature-card feature-card--ice">
-            <span class="feature-card__tag">Support</span>
-            <h3>Symptom Checker</h3>
-            <p>Use conversational medical screening flows to surface likely conditions and recommended care paths.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section section--diagnosis" id="diagnosis">
-        <div class="section-heading">
-          <p class="eyebrow">Diagnosis Upload</p>
-          <h2>Drop reports into a crafting-table style diagnosis station.</h2>
-        </div>
-
-        <div class="diagnosis-layout">
-          <div class="upload-panel">
-
-
-            <label class="upload-zone" for="report-file" id="upload-zone">
-              <input id="report-file" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx">
-
-              <span class="upload-zone__icon" aria-hidden="true"></span>
-              <strong>Drag &amp; drop a medical report</strong>
-              <span>PDF, JPG, PNG, DOC up to 20MB</span>
-            </label>
-
-            <div class="upload-preview" id="upload-preview">
-              <p class="upload-preview__label">Inventory Slot</p>
-              <strong>No report selected yet</strong>
-              <span>Your uploaded file name will appear here.</span>
-            </div>
-          </div>
-
-          <div class="result-panel">
-            <div class="result-panel__header">
-              <span>Diagnosis Output</span>
-              <span class="result-panel__badge">AI Ready</span>
+    <div class="site-shell">
+        <header class="hero" id="home">
+            <div class="hero__background">
+                <div class="hero__image layer" data-depth="0.12"></div>
+                <div class="hero__overlay"></div>
             </div>
 
-            <div class="result-list">
-              <article>
-                <strong>Blood Panel Summary</strong>
-                <p>Auto-detects anomalies, compares ranges, and surfaces urgent markers with clean clinical language.
-                </p>
-              </article>
+            <nav class="navbar">
+                <a class="brand" href="#home" aria-label="MedCraft AI home">
+                    <img class="brand__icon" src="./assets/minecraft_logo_final.png" alt="MedCraft AI logo">
+                    <span class="brand__text">MedCraft AI</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#home" class="stone--container">Home</a>
+                    <a href="#features" class="stone--container">Features</a>
+                    <a href="./appointment.html" class="stone--container">Book Appointment</a>
+                    <a href="#doctor" class="stone--container">Doctor</a>
+                    <a href="#queue" class="stone--container">Queue</a>
+                </div>
+                <div><a href="./sign-in.html" class="stone--container1">Sign In</a>
+                </div>
+            </nav>
 
-              <article>
-                <strong>Radiology Scan Notes</strong>
-                <p>Supports image-linked reports and converts dense findings into patient-friendly summaries.</p>
-              </article>
+            <div class="hero__content">
+                <div class="hero__copy">
+                    <h1>AI Care In A Trusted Minecraft World.</h1>
+                    <p class="hero__description">
+                        Upload reports, monitor symptoms, and review health insights through a futuristic
+                        medical interface inspired by floating islands, block textures, and clean clinical design.
+                    </p>
+                    <div class="hero__actions">
+                        <a class="button button--primary" href="#diagnosis">Upload Report</a>
+                        <a class="button button--secondary" href="#features">Check Diagnosis</a>
+                    </div>
+                    <div class="hero__indicators">
+                        <div class="indicator-card">
+                            <span class="indicator-card__label">Health Sync</span>
+                            <strong>Realtime Monitoring</strong>
+                        </div>
+                        <div class="indicator-card indicator-card--alert">
+                            <span class="indicator-card__label">Medical Assist</span>
+                            <strong>Rapid Triage Signals</strong>
+                        </div>
+                    </div>
+                </div>
 
-              <article>
-                <strong>Next Step Guidance</strong>
-                <p>Flags consultation urgency, probable risk level, and suggested follow-up pathways.</p>
-              </article>
+
             </div>
-          </div>
-        </div>
-      </section>
+        </header>
 
-      <section class="section section--services" id="services">
-        <div class="section-heading">
-          <p class="eyebrow">Services</p>
-          <h2>Professional care services with glass-and-voxel depth.</h2>
-        </div>
-        <div class="service-grid">
-          <article class="service-card">
-            <h3>Virtual Consultation</h3>
-            <p>Connect care teams and patients through a calm, secure interface with real-time prep summaries.</p>
-          </article>
-          <article class="service-card">
-            <h3>Health Monitoring</h3>
-            <p>Track status trends, risk alerts, and wellness signals with dashboard modules that feel like a game HUD.
-            </p>
-          </article>
-          <article class="service-card">
-            <h3>AI Reports</h3>
-            <p>Generate readable medical report breakdowns with structured outputs for clinicians and patients.</p>
-          </article>
-        </div>
-      </section>
+        <main>
+            <section class="section section--features" id="features">
+                <div class="section-heading">
+                    <p class="eyebrow">Features</p>
+                    <h2>Healthcare tools rendered in crisp block-style UI.</h2>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card feature-card--grass" id="ai-diagnosis-card" style="cursor: pointer;">
+                        <span class="feature-card__tag">AI Core</span>
+                        <h3>AI Diagnosis</h3>
+                        <p>Analyze symptoms and clinical indicators with a fast, readable engine built for modern care
+                            workflows.
+                        </p>
+                    </article>
+                    <article class="feature-card feature-card--stone" id="report-analysis-card" style="cursor: pointer;">
+                        <span class="feature-card__tag">Reports</span>
+                        <h3>Report Analysis</h3>
+                        <p>Convert uploaded reports into structured insights with highlighted risks, findings, and
+                            next-step
+                            guidance.</p>
+                    </article>
+                    <article class="feature-card feature-card--ice" id="symptom-checker-card" style="cursor: pointer;">
+                        <span class="feature-card__tag">Support</span>
+                        <h3>Symptom Checker</h3>
+                        <p>Use conversational medical screening flows to surface likely conditions and recommended care
+                            paths.</p>
+                    </article>
+                </div>
+            </section>
 
-      <section class="section section--stats">
-        <div class="dashboard-strip">
-          <article>
-            <span>Patients</span>
-            <strong>182,430</strong>
-          </article>
-          <article>
-            <span>Reports</span>
-            <strong>61,982</strong>
-          </article>
-          <article>
-            <span>Accuracy</span>
-            <strong>98.4%</strong>
-          </article>
-          <article>
-            <span>Clinics</span>
-            <strong>240+</strong>
-          </article>
-        </div>
-      </section>
+            <section class="section section--diagnosis" id="diagnosis">
+                <div class="section-heading">
+                    <p class="eyebrow">Diagnosis Upload</p>
+                    <h2>Drop reports into a crafting-table style diagnosis station.</h2>
+                </div>
 
-      <section class="section section--cta" id="contact">
-        <div class="cta-panel">
-          <div>
-            <p class="eyebrow">Ready for launch</p>
-            <h2>Bring Minecraft energy to digital healthcare without losing clarity or trust.</h2>
-          </div>
-          <a class="button button--primary" href="#diagnosis">Start Diagnosis</a>
-        </div>
-      </section>
-    </main>
-  </div>
+                <div class="diagnosis-layout">
+                    <div class="upload-panel">
 
-  <script src="script.js"></script>
+
+                        <label class="upload-zone" for="report-file" id="upload-zone">
+                            <input id="report-file" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx">
+
+                            <span class="upload-zone__icon" aria-hidden="true"></span>
+                            <strong>Drag &amp; drop a medical report</strong>
+                            <span>PDF, JPG, PNG, DOC up to 20MB</span>
+                        </label>
+
+                        <div class="upload-preview" id="upload-preview">
+                            <p class="upload-preview__label">Inventory Slot</p>
+                            <strong>No report selected yet</strong>
+                            <span>Your uploaded file name will appear here.</span>
+                        </div>
+                        <button id="analyze-report-btn" class="button button--primary" style="width: 100%; margin-top: 1rem; display: none;">Analyze Report</button>
+                    </div>
+
+                    <div class="result-panel">
+                        <div class="result-panel__header">
+                            <span>Diagnosis Output</span>
+                            <span class="result-panel__badge">AI Ready</span>
+                        </div>
+
+                        <div class="result-list">
+                            <article>
+                                <strong>Blood Panel Summary</strong>
+                                <p>Auto-detects anomalies, compares ranges, and surfaces urgent markers with clean
+                                    clinical language.
+                                </p>
+                            </article>
+
+                            <article>
+                                <strong>Radiology Scan Notes</strong>
+                                <p>Supports image-linked reports and converts dense findings into patient-friendly
+                                    summaries.</p>
+                            </article>
+
+                            <article>
+                                <strong>Next Step Guidance</strong>
+                                <p>Flags consultation urgency, probable risk level, and suggested follow-up pathways.
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--services" id="services">
+                <div class="section-heading">
+                    <p class="eyebrow">Services</p>
+                    <h2>Professional care services with glass-and-voxel depth.</h2>
+                </div>
+                <div class="service-grid">
+                    <article class="service-card">
+                        <h3>Virtual Consultation</h3>
+                        <p>Connect care teams and patients through a calm, secure interface with real-time prep
+                            summaries.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3>Health Monitoring</h3>
+                        <p>Track status trends, risk alerts, and wellness signals with dashboard modules that feel like
+                            a game HUD.
+                        </p>
+                    </article>
+                    <article class="service-card">
+                        <h3>AI Reports</h3>
+                        <p>Generate readable medical report breakdowns with structured outputs for clinicians and
+                            patients.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section section--stats">
+                <div class="dashboard-strip">
+                    <article>
+                        <span>Patients</span>
+                        <strong>182,230</strong>
+                    </article>
+                    <article>
+                        <span>Reports</span>
+                        <strong>61,982</strong>
+                    </article>
+                    <article>
+                        <span>Accuracy</span>
+                        <strong>98.4%</strong>
+                    </article>
+                    <article>
+                        <span>Clinics</span>
+                        <strong>240+</strong>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section section--cta" id="contact">
+                <div class="cta-panel">
+                    <div>
+                        <p class="eyebrow">Ready for launch</p>
+                        <h2>Bring Minecraft energy to digital healthcare without losing clarity or trust.</h2>
+                    </div>
+                    <a class="button button--primary" href="#diagnosis">Start Diagnosis</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- AI Diagnosis Modal -->
+    <div id="ai-diagnosis-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="background: var(--surface-bg); border: 2px solid var(--block-border); padding: 2rem; border-radius: 8px; width: 90%; max-width: 500px;">
+            <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 1rem;">AI Diagnosis</h2>
+            <textarea id="ai-diagnosis-input" rows="4" style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); color: var(--text-primary); border: 2px solid var(--border-color); font-family: var(--font-body); border-radius: 4px;" placeholder="Enter clinical indicators (e.g. Blood pressure 140/90, fatigue)"></textarea>
+            <div id="ai-diagnosis-result" style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;"></div>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                <button id="check-diagnosis-btn" class="button button--primary" style="flex: 1;">Get Diagnosis</button>
+                <button id="close-diagnosis-modal-btn" class="button button--secondary" style="flex: 1;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Analysis Modal -->
+    <div id="report-analysis-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="background: var(--surface-bg); border: 2px solid var(--block-border); padding: 2rem; border-radius: 8px; width: 90%; max-width: 500px;">
+            <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 1rem;">Report Analysis</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Upload your medical document (PDF, JPG) for instant insights.</p>
+            <input type="file" id="modal-report-file" style="margin-bottom: 1rem; color: var(--text-primary); width: 100%;">
+            <div id="modal-report-result" style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem; max-height: 200px; overflow-y: auto;"></div>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                <button id="modal-analyze-report-btn" class="button button--primary" style="flex: 1;">Analyze Report</button>
+                <button id="close-report-modal-btn" class="button button--secondary" style="flex: 1;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Symptom Checker Modal -->
+    <div id="symptom-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="background: var(--surface-bg); border: 2px solid var(--block-border); padding: 2rem; border-radius: 8px; width: 90%; max-width: 500px;">
+            <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 1rem;">Symptom Checker</h2>
+            <textarea id="symptom-input" rows="4" style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); color: var(--text-primary); border: 2px solid var(--border-color); font-family: var(--font-body); border-radius: 4px;" placeholder="Describe your symptoms (e.g., I have a headache and fever...)"></textarea>
+            <div id="symptom-result" style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;"></div>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                <button id="check-symptom-btn" class="button button--primary" style="flex: 1;">Check Symptoms</button>
+                <button id="close-modal-btn" class="button button--secondary" style="flex: 1;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

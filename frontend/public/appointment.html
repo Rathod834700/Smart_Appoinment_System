@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking | MedCraft AI</title>
+    <meta name="description"
+        content="Book virtual or in-person healthcare appointments through the Minecraft-inspired MedCraft AI scheduling portal.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="appointment.css">
+</head>
+
+<body>
+    <main class="appointment-page">
+        <div class="appointment-background" aria-hidden="true">
+            <div class="appointment-background__image"></div>
+            <div class="appointment-background__overlay"></div>
+        </div>
+
+        <section class="appointment-shell">
+            <nav class="appointment-nav">
+                <a class="nav-link" href="./index.html">Back Home</a>
+            </nav>
+
+            <div class="appointment-hero">
+                <div class="appointment-copy">
+                    <p class="eyebrow">Appointment Hub</p>
+                    <h1>Reserve Care Slots Inside A Minecraft-Style Health Portal.</h1>
+                    <p>
+                        Choose a doctor, select your date, and lock in a virtual or in-clinic appointment through
+                        a clean futuristic booking flow.
+                    </p>
+                </div>
+
+                <div class="appointment-card">
+                    <div class="card-header">
+                        <p class="eyebrow">Book Visit</p>
+                        <h2>Schedule Appointment</h2>
+                    </div>
+                    <form class="appointment-form">
+                        <label class="field">
+                            <span>Patient Name</span>
+                            <input type="text" placeholder="Alex Walker">
+                        </label>
+                        <div class="field-grid">
+                            <label class="field">
+                                <span>Specialty</span>
+                                <select>
+                                    <option>General Medicine</option>
+                                    <option>Cardiology</option>
+                                    <option>Pediatrics</option>
+                                    <option>Dermatology</option>
+                                </select>
+                            </label>
+                            <label class="field">
+                                <span>Mode</span>
+                                <select>
+                                    <option>Virtual</option>
+                                    <option>In Clinic</option>
+                                    <option>Follow-Up</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="field-grid">
+                            <label class="field">
+                                <span>Date</span>
+                                <input type="date">
+                            </label>
+                            <label class="field">
+                                <span>Time</span>
+                                <input type="time">
+                            </label>
+                        </div>
+                        <label class="field">
+                            <span>Contact Number</span>
+                            <input type="tel" placeholder="+91 98765 43210">
+                        </label>
+                        <label class="field">
+                            <span>Notes</span>
+                            <textarea rows="4" placeholder="Tell us about symptoms or visit purpose"></textarea>
+                        </label>
+                        <button class="button" type="submit">Confirm Appointment</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="slot-grid">
+                <article class="slot-card">
+                    <span>Today</span>
+                    <strong>12 Open Slots</strong>
+                    <p>Fast booking for general checkups and virtual triage.</p>
+                </article>
+                <article class="slot-card">
+                    <span>Priority</span>
+                    <strong>Urgent Review</strong>
+                    <p>Reserve early consultations for recent reports or symptom flare-ups.</p>
+                </article>
+                <article class="slot-card">
+                    <span>Specialists</span>
+                    <strong>18 Doctors</strong>
+                    <p>Choose from multiple specialties with guided appointment matching.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
