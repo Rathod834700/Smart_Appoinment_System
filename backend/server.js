@@ -4,6 +4,8 @@ const cors = require('cors');
 const { connectDB } = require('./config');
 
 const appointments = require('./routes/appointments');
+const patients = require('./routes/patients');
+const doctors = require('./routes/doctors');
 
 dotenv.config();
 
@@ -12,6 +14,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/appointments', appointments);
+app.use('/api/patients', patients);
+app.use('/api/doctors', doctors);
 
 app.get('/api/health', (req,res) => res.json({ok:true}));
 

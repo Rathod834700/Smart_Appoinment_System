@@ -1,30 +1,40 @@
 const express = require('express');
-const { getDB } = require('../config');
+const Appointment = require('../models/Appointments');
 const router = express.Router();
 
 // Create appointment
 router.post('/create', async (req,res) => {
-  const db = getDB();
-  const result = await db.collection('appointments').insertOne(req.body);
-  res.json(result);
+  try {
+    const appt = new Appointment(req.body);
+    const result = await appt.save();
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Get all appointments
 router.get('/', async (req,res) => {
-  const db = getDB();
-  const appts = await db.collection('appointments').find().toArray();
-  res.json(appts);
+  try {
+    const appts = await Appointment.find();
+    res.json(appts);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Reschedule
 router.post('/reschedule/:id', async (req,res) => {
-  const db = getDB();
-  const { ObjectId } = require('mongodb');
-  const result = await db.collection('appointments').updateOne(
-    { _id: new ObjectId(req.params.id) },
-    { $set: { requestedTime: req.body.newTime, status: 'rescheduled' } }
-  );
-  res.json(result);
+  try {
+    const result = await Appointment.findByIdAndUpdate(
+      req.params.id,
+      { requestedTime: req.body.newTime, status: 'rescheduled' },
+      { new: true }
+    );
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 module.exports = router;

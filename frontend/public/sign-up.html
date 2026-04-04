@@ -64,31 +64,35 @@
           <span>or create with email</span>
         </div>
 
-        <form class="auth-form">
+        <form class="auth-form" id="signupForm">
           <div class="field-grid">
             <label class="field">
               <span>First Name</span>
-              <input type="text" placeholder="Alex">
+              <input type="text" id="firstName" placeholder="Alex" required>
             </label>
             <label class="field">
               <span>Last Name</span>
-              <input type="text" placeholder="Walker">
+              <input type="text" id="lastName" placeholder="Walker" required>
             </label>
           </div>
           <label class="field">
+            <span>Age</span>
+            <input type="number" id="age" placeholder="30" required>
+          </label>
+          <label class="field">
             <span>Email</span>
-            <input type="email" placeholder="name@medcraft.ai">
+            <input type="email" id="email" placeholder="name@medcraft.ai">
           </label>
           <label class="field">
             <span>Phone Number</span>
-            <input type="tel" placeholder="+91 98765 43210">
+            <input type="tel" id="phoneNumber" placeholder="+91 98765 43210" required>
           </label>
           <label class="field">
             <span>Password</span>
-            <input type="password" placeholder="Create a secure password">
+            <input type="password" id="password" placeholder="Create a secure password">
           </label>
           <label class="checkbox-field">
-            <input type="checkbox">
+            <input type="checkbox" required>
             <span>I agree to the privacy policy and terms of service.</span>
           </label>
           <button class="button button--primary" type="submit">Create Account</button>
@@ -101,5 +105,36 @@
       </div>
     </section>
   </main>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.querySelector('.button--primary');
+      btn.textContent = 'Saving...';
+      
+      const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
+      const age = parseInt(document.getElementById('age').value, 10);
+      const phone = document.getElementById('phoneNumber').value;
+      
+      try {
+        const response = await fetch('http://localhost:5000/api/patients/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, age: age, phone: phone })
+        });
+        const data = await response.json();
+        if(response.ok) {
+          alert('✅ Success! Patient added to MongoDB with ID: ' + data._id);
+          window.location.href = './index.html';
+        } else {
+          alert('Error: ' + data.error);
+          btn.textContent = 'Create Account';
+        }
+      } catch(err) {
+        alert('Error fetching API: ' + err.message);
+        btn.textContent = 'Create Account';
+      }
+    });
+  </script>
 </body>
 </html>
