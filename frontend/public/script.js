@@ -1,3 +1,11 @@
+const getBackendUrl = (path) => {
+    const host = window.location.hostname;
+    const baseUrl = (host === "localhost" || host === "127.0.0.1") 
+        ? "http://localhost:5001" 
+        : `http://${host}:5001`;
+    return `${baseUrl}/api${path}`;
+};
+
 const layers = document.querySelectorAll(".layer");
 const hero = document.querySelector(".hero");
 const uploadZone = document.getElementById("upload-zone");
@@ -103,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
             formData.append("report", file);
 
             try {
-                const response = await fetch("http://localhost:5000/api/ai/analyze-report", {
+                const response = await fetch(getBackendUrl("/ai/analyze-report"), {
                     method: "POST",
                     body: formData
                 });
@@ -156,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
             aiDiagResult.innerHTML = "Processing...";
 
             try {
-                const response = await fetch("http://localhost:5000/api/ai/ai-diagnosis", {
+                const response = await fetch(getBackendUrl("/ai/ai-diagnosis"), {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ indicators })
@@ -211,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
             formData.append("report", file);
 
             try {
-                const response = await fetch("http://localhost:5000/api/ai/analyze-report", {
+                const response = await fetch(getBackendUrl("/ai/analyze-report"), {
                     method: "POST",
                     body: formData
                 });
@@ -267,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             symptomResult.innerHTML = "Thinking...";
 
             try {
-                const response = await fetch("http://localhost:5000/api/ai/symptom-checker", {
+                const response = await fetch(getBackendUrl("/ai/symptom-checker"), {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -311,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
         doctorModal.style.display = "flex";
 
         try {
-            const response = await fetch("http://localhost:5000/api/doctors");
+            const response = await fetch(getBackendUrl("/doctors"));
             const doctors = await response.json();
 
             const available = doctors.filter(d => d.isAvailable);
@@ -348,6 +356,107 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         closeDoctorModalBtn.addEventListener("click", () => {
             doctorModal.style.display = "none";
+        });
+    }
+
+    // 6. Smart Queue - Backend + predict.py Integration
+    const viewQueueBtn = document.getElementById("view-queue-btn");
+    const queueModal = document.getElementById("queue-modal");
+    const closeQueueModalBtn = document.getElementById("close-queue-modal-btn");
+    const queueList = document.getElementById("queue-list");
+    const queueModalBadgeShow = document.getElementById("queue-modal-badge-show");
+    const queueModalBadgeNoShow = document.getElementById("queue-modal-badge-noshow");
+    const queueStatTotal = document.getElementById("queue-stat-total");
+    const queueStatShow = document.getElementById("queue-stat-show");
+    const queueStatNoShow = document.getElementById("queue-stat-noshow");
+
+    const fetchAndShowQueue = async () => {
+        if (queueList) queueList.innerHTML = "Loading queue...";
+        if (queueModal) queueModal.style.display = "flex";
+
+        try {
+            const response = await fetch(getBackendUrl("/queue"));
+            const data = await response.json();
+
+            // Update section stat cards
+            if (queueStatTotal) queueStatTotal.textContent = data.total ?? "—";
+            if (queueStatShow) queueStatShow.textContent = data.willShow ?? "—";
+            if (queueStatNoShow) queueStatNoShow.textContent = data.noShow ?? "—";
+
+            // Update modal badges
+            if (queueModalBadgeShow) queueModalBadgeShow.textContent = `✓ ${data.willShow} Will Show`;
+            if (queueModalBadgeNoShow) queueModalBadgeNoShow.textContent = `✗ ${data.noShow} No-Show`;
+
+            if (!data.queue || data.queue.length === 0) {
+                queueList.innerHTML = "<p style='color: var(--text-secondary);'>No appointments in queue. Book some appointments first.</p>";
+                return;
+            }
+
+            queueList.innerHTML = data.queue.map((item, index) => {
+                const isNoShow = item.prediction === 1;
+                const borderColor = isNoShow ? "#f44336" : "#4CAF50";
+                const labelColor = isNoShow ? "#f44336" : "#4CAF50";
+                const labelBg = isNoShow ? "#f4433618" : "#4CAF5018";
+                const time = item.requestedTime
+                    ? new Date(item.requestedTime).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })
+                    : "—";
+                const urgencyStars = "★".repeat(Math.min(item.urgency || 0, 5)) + "☆".repeat(Math.max(0, 5 - (item.urgency || 0)));
+
+                return `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1rem;
+                     background: rgba(0,0,0,0.3); border-radius: 6px; border-left: 3px solid ${borderColor}; gap: 1rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                        <span style="background: rgba(255,255,255,0.08); color: var(--text-secondary); min-width: 28px;
+                               height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+                               font-size: 0.8rem; font-weight: bold;">${index + 1}</span>
+                        <div>
+                            <strong style="color: var(--text-primary); display: block;">${item.patientName}</strong>
+                            <span style="color: var(--text-secondary); font-size: 0.82rem;">Dr. ${item.doctorName}</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; font-size: 0.8rem; color: var(--text-secondary);">
+                        <span style="display: block;">📅 ${time}</span>
+                        <span style="color: gold; font-size: 0.75rem;">${urgencyStars}</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem;">
+                        <span style="background: ${labelBg}; color: ${labelColor}; border: 1px solid ${borderColor};
+                               padding: 0.25rem 0.65rem; border-radius: 4px; font-size: 0.78rem; font-weight: bold; white-space: nowrap;">
+                            ${isNoShow ? "✗ No-Show Expected" : "✓ Will Show Up"}
+                        </span>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary); text-transform: capitalize;">${item.status}</span>
+                    </div>
+                </div>`;
+            }).join("");
+        } catch (err) {
+            console.error(err);
+            if (queueList) queueList.innerHTML = "<span style='color: red;'>Error connecting to server. Make sure backend is running.</span>";
+        }
+    };
+
+    // Queue nav link (href="#queue") already scrolls to section; button opens modal
+    if (viewQueueBtn && queueModal) {
+        viewQueueBtn.addEventListener("click", fetchAndShowQueue);
+    }
+
+    // Also trigger from nav Queue link click
+    const queueNavLink = document.querySelector("a[href='#queue']");
+    if (queueNavLink) {
+        queueNavLink.addEventListener("click", () => {
+            // Update stats in the section (without opening modal)
+            fetch(getBackendUrl("/queue"))
+                .then(r => r.json())
+                .then(data => {
+                    if (queueStatTotal) queueStatTotal.textContent = data.total ?? "—";
+                    if (queueStatShow) queueStatShow.textContent = data.willShow ?? "—";
+                    if (queueStatNoShow) queueStatNoShow.textContent = data.noShow ?? "—";
+                })
+                .catch(() => {});
+        });
+    }
+
+    if (closeQueueModalBtn) {
+        closeQueueModalBtn.addEventListener("click", () => {
+            if (queueModal) queueModal.style.display = "none";
         });
     }
 });

@@ -177,6 +177,31 @@
                 </div>
             </section>
 
+            <!-- Queue Section -->
+            <section class="section section--stats" id="queue" style="padding: 3rem 1.5rem;">
+                <div class="section-heading">
+                    <p class="eyebrow">Smart Queue</p>
+                    <h2>AI-Powered Appointment Queue & No-Show Prediction</h2>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                    <div class="indicator-card" style="min-width: 180px; text-align: center;">
+                        <span class="indicator-card__label">Total Scheduled</span>
+                        <strong id="queue-stat-total">—</strong>
+                    </div>
+                    <div class="indicator-card" style="min-width: 180px; text-align: center;">
+                        <span class="indicator-card__label">Will Show Up</span>
+                        <strong id="queue-stat-show" style="color: #4CAF50;">—</strong>
+                    </div>
+                    <div class="indicator-card indicator-card--alert" style="min-width: 180px; text-align: center;">
+                        <span class="indicator-card__label">Expected No-Show</span>
+                        <strong id="queue-stat-noshow" style="color: #f44336;">—</strong>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button id="view-queue-btn" class="button button--primary" style="min-width: 200px;">📋 View Optimized Queue</button>
+                </div>
+            </section>
+
             <section class="section section--stats">
                 <div class="dashboard-strip">
                     <article>
@@ -259,6 +284,21 @@
             </div>
             <div id="doctor-list" style="display: flex; flex-direction: column; gap: 0.8rem;">Loading...</div>
             <button id="close-doctor-modal-btn" class="button button--secondary" style="width: 100%; margin-top: 1.5rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- Queue Modal -->
+    <div id="queue-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: var(--surface-bg); border: 2px solid var(--block-border); padding: 2rem; border-radius: 8px; width: 95%; max-width: 700px; max-height: 85vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin: 0;">📋 Optimised Patient Queue</h2>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span id="queue-modal-badge-show" style="background: #4CAF5022; color: #4CAF50; border: 1px solid #4CAF50; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold;"></span>
+                    <span id="queue-modal-badge-noshow" style="background: #f4433622; color: #f44336; border: 1px solid #f44336; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold;"></span>
+                </div>
+            </div>
+            <div id="queue-list" style="display: flex; flex-direction: column; gap: 0.8rem;">Loading...</div>
+            <button id="close-queue-modal-btn" class="button button--secondary" style="width: 100%; margin-top: 1.5rem;">Close</button>
         </div>
     </div>
 

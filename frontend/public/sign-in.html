@@ -54,14 +54,14 @@
                     <span>or sign in with email</span>
                 </div>
 
-                <form class="auth-form">
+                <form class="auth-form" id="login-form">
                     <label class="field">
                         <span>Email</span>
-                        <input type="email" placeholder="name@medcraft.ai">
+                        <input type="email" id="email" placeholder="name@medcraft.ai" required>
                     </label>
                     <label class="field">
                         <span>Password</span>
-                        <input type="password" placeholder="Enter your password">
+                        <input type="password" id="password" placeholder="Enter your password" required>
                     </label>
                     <div class="field-row">
                         <label class="checkbox-field">
@@ -71,6 +71,7 @@
                         <a class="text-link" href="#">Forgot password?</a>
                     </div>
                     <button class="button button--primary" type="submit">Sign In</button>
+                    <div id="login-message" style="margin-top: 1rem; text-align: center; font-size: 0.82rem; display: none;"></div>
                 </form>
 
                 <p class="auth-footer">
@@ -80,6 +81,8 @@
             </div>
         </section>
     </main>
+
+    <script src="scripts.js"></script>
 </body>
 
 </html>

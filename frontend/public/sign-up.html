@@ -46,31 +46,32 @@
                     </p>
                 </div>
 
-                <form class="auth-form">
+                <form class="auth-form" id="signup-form">
                     <div class="field-grid">
                         <label class="field">
                             <span>First Name</span>
-                            <input type="text" placeholder="Alex">
+                            <input type="text" id="firstName" placeholder="Alex" required>
                         </label>
                         <label class="field">
                             <span>Last Name</span>
-                            <input type="text" placeholder="Walker">
+                            <input type="text" id="lastName" placeholder="Walker" required>
                         </label>
                     </div>
                     <label class="field">
                         <span>Email</span>
-                        <input type="email" placeholder="name@medcraft.ai">
+                        <input type="email" id="email" placeholder="name@medcraft.ai" required>
                     </label>
                     <label class="field">
                         <span>Phone Number</span>
-                        <input type="tel" placeholder="+91 98765 43210">
+                        <input type="tel" id="phone" placeholder="+91 98765 43210" required>
                     </label>
                     <label class="field">
                         <span>Password</span>
-                        <input type="password" placeholder="Create a secure password">
+                        <input type="password" id="password" placeholder="Create a secure password" required>
                     </label>
 
                     <button class="button button--primary" type="submit">Create Account</button>
+                    <div id="signup-message" style="margin-top: 1rem; text-align: center; font-size: 0.82rem; display: none;"></div>
                 </form>
 
                 <p class="auth-footer">
@@ -80,6 +81,7 @@
             </div>
         </section>
     </main>
+    <script src="scripts.js"></script>
 </body>
 
 </html>

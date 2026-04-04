@@ -13,4 +13,18 @@ router.get('/', async (req,res) => {
   res.json(patients);
 });
 
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const patient = await Patient.findOne({ email, password });
+    if (patient) {
+      res.json({ success: true, patient });
+    } else {
+      res.status(401).json({ success: false, message: 'Invalid email or password' });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 module.exports = router;
