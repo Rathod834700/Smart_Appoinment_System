@@ -297,4 +297,57 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    // 5. Doctor Availability Modal
+    const doctorNavBtn = document.getElementById("doctor-nav-btn");
+    const doctorModal = document.getElementById("doctor-modal");
+    const closeDoctorModalBtn = document.getElementById("close-doctor-modal-btn");
+    const doctorList = document.getElementById("doctor-list");
+    const doctorCountBadge = document.getElementById("doctor-count-badge");
+
+    const fetchAndShowDoctors = async () => {
+        doctorList.innerHTML = "Loading doctors...";
+        doctorCountBadge.textContent = "";
+        doctorModal.style.display = "flex";
+
+        try {
+            const response = await fetch("http://localhost:5000/api/doctors");
+            const doctors = await response.json();
+
+            const available = doctors.filter(d => d.isAvailable);
+            const unavailable = doctors.filter(d => !d.isAvailable);
+
+            doctorCountBadge.textContent = `${available.length} Available`;
+
+            if (doctors.length === 0) {
+                doctorList.innerHTML = "<p style='color: var(--text-secondary);'>No doctors found. Please seed the database.</p>";
+                return;
+            }
+
+            doctorList.innerHTML = [...available, ...unavailable].map(d => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; background: rgba(0,0,0,0.3); border-radius: 6px; border-left: 3px solid ${d.isAvailable ? '#4CAF50' : '#f44336'};">
+                    <div>
+                        <strong style="color: var(--text-primary); display: block;">${d.name}</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.85rem;">${d.specialization}</span>
+                    </div>
+                    <span style="background: ${d.isAvailable ? '#4CAF5022' : '#f4433622'}; color: ${d.isAvailable ? '#4CAF50' : '#f44336'}; border: 1px solid ${d.isAvailable ? '#4CAF50' : '#f44336'}; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; white-space: nowrap;">
+                        ${d.isAvailable ? '✓ Available' : '✗ Busy'}
+                    </span>
+                </div>
+            `).join("");
+        } catch (err) {
+            console.error(err);
+            doctorList.innerHTML = "<span style='color: red;'>Error connecting to server.</span>";
+        }
+    };
+
+    if (doctorNavBtn && doctorModal) {
+        doctorNavBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            fetchAndShowDoctors();
+        });
+        closeDoctorModalBtn.addEventListener("click", () => {
+            doctorModal.style.display = "none";
+        });
+    }
 });

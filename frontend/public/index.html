@@ -32,7 +32,7 @@
                     <a href="#home" class="stone--container">Home</a>
                     <a href="#features" class="stone--container">Features</a>
                     <a href="./appointment.html" class="stone--container">Book Appointment</a>
-                    <a href="#doctor" class="stone--container">Doctor</a>
+                    <a href="#doctor" class="stone--container" id="doctor-nav-btn">Doctor</a>
                     <a href="#queue" class="stone--container">Queue</a>
                 </div>
                 <div><a href="./sign-in.html" class="stone--container1">Sign In</a>
@@ -247,6 +247,18 @@
                 <button id="check-symptom-btn" class="button button--primary" style="flex: 1;">Check Symptoms</button>
                 <button id="close-modal-btn" class="button button--secondary" style="flex: 1;">Close</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Doctor Availability Modal -->
+    <div id="doctor-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: var(--surface-bg); border: 2px solid var(--block-border); padding: 2rem; border-radius: 8px; width: 90%; max-width: 560px; max-height: 80vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin: 0;">Available Doctors</h2>
+                <span id="doctor-count-badge" style="background: #4CAF50; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold;"></span>
+            </div>
+            <div id="doctor-list" style="display: flex; flex-direction: column; gap: 0.8rem;">Loading...</div>
+            <button id="close-doctor-modal-btn" class="button button--secondary" style="width: 100%; margin-top: 1.5rem;">Close</button>
         </div>
     </div>
 
